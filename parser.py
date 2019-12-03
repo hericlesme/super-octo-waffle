@@ -1,3 +1,5 @@
+import json
+
 def parse_ndjson(file_path):
     """ Parse ndjson files """
     contents = open(file_path, "r").read() 
