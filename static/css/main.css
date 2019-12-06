@@ -1,0 +1,171 @@
+/* colors */
+:root {
+    --main-bg-color: white; 
+    --main-bg-color2: white;
+    --main-nav-txt-color: white;
+    --main-txt-color: black;
+    --main-accent-color: #4285f4;
+    --main-nav-color: #4285f4;
+    --main-font-family: 'ubuntu', 'lucida console', 'courier','sans-serif';
+}
+
+@font-face{
+    font-family: 'ubuntu';
+    src:url('/static/fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face{
+    font-family: 'ubuntu';
+    src:url('/static/fonts/Ubuntu-Bold.ttf');
+    font-weight:bold;
+}
+
+@font-face{
+    font-family: 'ubuntu';
+    src:url('/static/fonts/Ubuntu-Italic.ttf');
+
+    font-style:italic;
+}
+
+
+/* 
+ * General
+ */
+
+html, body, h1 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin-top:100px;
+  background-color: #f4f4f4;
+  font-family: 'Open Sans', sans-serif;
+  font-size:18px;
+  font-family: var(--main-font-family);
+}
+
+h2, h3 {
+  font-weight: 300;
+  letter-spacing: -1.2px;
+
+}
+
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.section-content {
+  color: #3a3a3a;
+  float: left;
+  width: 1000px;
+  line-height: 30px;
+}
+
+.section-device {
+  float: right;
+  position: relative;
+  top: 65px;
+}
+
+.section-device img {
+  width: 600px;
+}
+
+textarea{
+  font-size:15px;
+}
+
+form div:nth-child(2){
+  padding: 20px 0px;
+}
+
+input[name="submit_btn"],
+input[name="again_btn"],
+.submitButton{
+  background: var(--main-accent-color);
+  border: 1px solid #1266f1;
+  color: #ffffff;
+  font-family: var(--main-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.23px;
+  padding: 12px 32px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 7px;
+}
+
+
+/* 
+ * Results
+ */
+
+div[id=button]{
+  padding: 20px 0px;
+}
+
+div h2{    /*title*/
+  font-size:40px
+}
+
+
+/*digit classifier */
+#controls{
+  padding: 30px 0px;
+}
+
+#clearButton {
+  background: lightgrey;
+  font-family: var(--main-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.23px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  margin-left:10px;
+  transition: .2s;
+}
+
+#clearButton{
+  box-shadow: none;
+  border: none;
+  background-color:lightgray;
+  width:250px;
+  height:40px;
+  border-radius:5px;
+}
+
+#clearButton:hover {
+  background-color: #3a6ec3;
+  color:lightgray;
+}
+
+#clearButton:active {
+  background-color: #3a6ec3;
+  color:lightgray;
+  transform: translateY(4px);
+}
