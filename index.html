@@ -2,155 +2,37 @@
 <html>
 
 <head>
-    <title>Web Apps | Kenny Lov</title>
-
+    <title>Gartic AI</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="./static/css/main.css" rel="stylesheet">
-    <!-- <link href="./static/css/quickdraw.css" rel="stylesheet"> -->
     <link rel="shortcut icon" type="image/x-icon" href="/static/img/k_blue.png">
 
 </head>
 
 <body>
-    <main class="hero-section">
-        <div>
-            <div class="container" id="interact">
+    <main>
+        <h1 class="title">GARTIC AI</h1>
+        <span>Inteligência Artificial - 2019.2</span>
+        <div class="main">
+            <div class="container">
                 <h3>Desenhe Aqui</h3>
                 <canvas id="canvas" width="280" height="280"
                     style="border:2px solid; border-radius: 2px; cursor: crosshair;"></canvas>
-                <div class="container" id="controls">
-                    <input type="button" id="clearButton" value="Clear">
+                    <input type="button" id="clearButton" value="apagar">
+            </div>
+            <div class="aside">
+                <h3>Categorias</h3>
+                <div id="categories">
                 </div>
+                <span id='label'></span>
             </div>
             <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
             <script src="static/js/quickdraw.js"></script>
-            <script src='static/js/Chart.min.js'></script>
-            <script type="text/javascript">
-
-
-                var mousePress = false;
-
-                canvas.onmousedown = function (e) {
-                    mousePress = true;
-                    getPred();
-                }
-
-                canvas.onmouseup = function (e) {
-                    mousePress = false;
-                    getPred();
-                }
-
-
-                var ctx = document.getElementById("myChart").getContext('2d');
-                // ctx.canvas.width = 300
-                // ctx.canvas.height = 400;
-                Chart.defaults.global.defaultFontColor = '#000';
-                Chart.defaults.global.defaultFontSize = 14;
-                // Chart.defaults.global.defaultFontFamily = "monospace";
-                var myChart = new Chart(ctx, {
-                    type: 'horizontalBar',
-                    data: {
-                        labels: [],
-                        datasets: [{
-                            label: 'Prediction:',
-                            data: [],
-                            backgroundColor: [
-                                'rgba(255, 99, 132, 0.5)',
-                                'rgba(54, 162, 235, 0.5)',
-                                'rgba(255, 206, 86, 0.5)',
-                                'rgba(75, 192, 192, 0.5)',
-                                'rgba(153, 102, 255, 0.5)',
-                                'rgba(255, 159, 64, 0.5)'
-                            ],
-                            borderColor: [
-                                'rgba(255,99,132,1)',
-                                'rgba(54, 162, 235, 1)',
-                                'rgba(255, 206, 86, 1)',
-                                'rgba(75, 192, 192, 1)',
-                                'rgba(153, 102, 255, 1)',
-                                'rgba(255, 159, 64, 1)'
-                            ],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        responsive: false,
-                        maintainAspectRatio: true,
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true,
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Category'
-                                }
-                            }],
-                            xAxes: [{
-                                ticks: {
-                                    beginAtZero: true,
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Probability'
-                                }
-                            }]
-                        }
-                    }
-                });
-
-                function getPred() {
-                    var $SCRIPT_ROOT = "http://localhost";
-                    var canvasObj = document.getElementById("canvas");
-                    var img = canvasObj.toDataURL();
-
-                    $.ajax({
-                        type: "POST",
-                        url: $SCRIPT_ROOT + "/predict_sketch",
-                        data: img,
-                        success: function (data) {
-
-                            myChart.data.labels = data.labels;
-                            myChart.data.datasets[0].data = data.values;
-                            myChart.update();
-
-                        }
-                    });
-                }
-
-
-                var counter = 0;
-
-                function timer() {
-                    if (counter < 4) {
-                        counter = counter + 1;
-                    }
-                    else {
-                        counter = 0
-                    }
-                }
-
-                setInterval(timer, 100);
-
-                document.getElementById("canvas").onmousemove = function (e) {
-                    if (!mousePress) return;
-
-                    while (mousePress) {
-                        if (counter == 3) {
-                            getPred();
-                        }
-
-
-                        return false;
-                    }
-
-                };
             </script>
         </div>
     </main>
-    <div class="clearfix"></div>
 </body>
 
 </html>
