@@ -1,1 +1,1 @@
-# super-octo-waffle
+# Super Octo Waffle
